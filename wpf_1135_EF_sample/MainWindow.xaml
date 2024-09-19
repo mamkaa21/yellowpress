@@ -15,21 +15,23 @@
             <MenuItem Header="Исполнитель">
                 <MenuItem Header="Добавить" Click="OpenNewSingerEditor"/>
                 <MenuItem Header="Изменить" Click="OpenSingerEditor"/>
+                <MenuItem Header="Добавить статью" Click="OpenNewYellowPressEditor"/>
             </MenuItem>
+            <MenuItem Header="Желтая пресса" Click="OpenYellowPress"/>
         </Menu>
         <ListView ItemsSource="{Binding Singers}" SelectedItem="{Binding SelectedSinger}" Grid.Row="1">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Firstname}"/>
                     <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding Lastname}"/>
-                    <GridViewColumn>
+                    <GridViewColumn Header="Песни">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <ItemsControl DisplayMemberPath="Title" ItemsSource="{Binding Musics}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn>
+                    <GridViewColumn Header="Статьи">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <ItemsControl DisplayMemberPath="TitleArticle" ItemsSource="{Binding YellowPresses}"/>
