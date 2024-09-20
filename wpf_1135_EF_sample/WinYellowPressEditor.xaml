@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="WinYellowPressEditor" Height="450" Width="800">
     <StackPanel>
-        <Label Content="AAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+        <Label Content="Название статьи"/>
+        <TextBox Text="{Binding Singer.Firstname}"/>
+        <Label Content="Содержание статьи"/>
+        <TextBox Text="{Binding Singer.Lastname}"/>
+        <Label Content="Певец"/>
+        <ComboBox DisplayMemberPath="Singer" ItemsSource="{Binding Singers}" />
+        <Button Content="Сохранить и закрыть" Click="SaveClose"/>
     </StackPanel>
 </Window>

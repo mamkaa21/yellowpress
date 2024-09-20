@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -35,6 +36,19 @@ namespace wpf_1135_EF_sample
             }
         }
 
+        private ObservableCollection<YellowPress> yellowPresss;
+        
+        public ObservableCollection<YellowPress> YellowPresses
+        {
+            get => yellowPresss;
+            set
+            {
+                yellowPresss = value;
+                Signal();
+            }
+        }
+
+        public YellowPress SelectedYellowPress { get; set; }
         public Singer SelectedSinger { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -58,12 +72,31 @@ namespace wpf_1135_EF_sample
         {
             using (var db = new _1135New2024Context())
             {
-                Singers = db.Singers.
-                    Include(s => s.YellowPresses).
-                    ToList();
+                YellowPresses = new ObservableCollection<YellowPress>( db.YellowPresses.
+                    Include(s => s.IdSingerNavigation).ToList());
             }
         }
 
-       
+        private void DeleteYellowPress(object sender, RoutedEventArgs e)
+        {
+            //if (SelectedYellowPress == null)
+            //    return;
+
+            using (var db = new _1135New2024Context())
+            {
+                
+                db.Remove(SelectedYellowPress);
+
+                db.SaveChanges();
+            }
+            YellowPresses.Remove(SelectedYellowPress);
+           
+        }
+
+        private void ddclick(object sender, MouseButtonEventArgs e)
+        {
+            WinFullYellowPress winFullYellowPress = new WinFullYellowPress();
+            winFullYellowPress.Show();
+        }
     }
 }

@@ -41,6 +41,8 @@ namespace wpf_1135_EF_sample
             Loaded += MainWindow_Loaded;
         }
 
+ 
+
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateList();            

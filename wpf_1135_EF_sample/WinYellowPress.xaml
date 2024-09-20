@@ -6,21 +6,21 @@
         xmlns:local="clr-namespace:wpf_1135_EF_sample"
         mc:Ignorable="d"
         Title="WinYellowPress" Height="450" Width="800">
+
     <Grid>
-        <ListView ItemsSource= "{Binding Singers}" SelectedItem="{Binding SelectedSinger}">
+        <Grid.RowDefinitions>
+            <RowDefinition  />
+            <RowDefinition  Height="50"/>
+        </Grid.RowDefinitions>
+        <ListView Grid.Row="0" ItemsSource= "{Binding YellowPresses}" SelectedItem="{Binding SelectedYellowPress}" MouseDoubleClick="ddclick">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Firstname}"/>
-                    <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding Lastname}"/>
-                    <GridViewColumn Header="Заголовок">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <ItemsControl DisplayMemberPath="TitleArticle" ItemsSource="{Binding YellowPresses}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                    <GridViewColumn Header="Заголовок" DisplayMemberBinding="{Binding TitleArticle}"/>
+                    <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding IdSingerNavigation.Firstname}"/>
+                    <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding IdSingerNavigation.Lastname}"/>
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button Content="Удалить" Click="DeleteYellowPress" Grid.Row="1"/>
     </Grid>
 </Window>

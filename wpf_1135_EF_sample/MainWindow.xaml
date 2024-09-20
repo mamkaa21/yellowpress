@@ -10,6 +10,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
         <Menu>
             <MenuItem Header="Исполнитель">
@@ -18,6 +19,7 @@
                 <MenuItem Header="Добавить статью" Click="OpenNewYellowPressEditor"/>
             </MenuItem>
             <MenuItem Header="Желтая пресса" Click="OpenYellowPress"/>
+            
         </Menu>
         <ListView ItemsSource="{Binding Singers}" SelectedItem="{Binding SelectedSinger}" Grid.Row="1">
             <ListView.View>
@@ -41,5 +43,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
+
+    
     </Grid>
 </Window>
