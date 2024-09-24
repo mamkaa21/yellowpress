@@ -23,58 +23,30 @@ namespace wpf_1135_EF_sample
     /// </summary>
     public partial class WinFullYellowPress : Window
     { 
-        //private List<Singer> singers;
+        private YellowPress selectedYellowPress;
 
-        //public List<Singer> Singers
-        //{
-        //    get => singers;
-        //    set
-        //    {
-        //        singers = value;
-        //        Signal();
-        //    }
-        //} 
-        private ObservableCollection<YellowPress> yellowPresss;
-
-        public ObservableCollection<YellowPress> YellowPresses
+        public YellowPress SelectedYellowPress
         {
-            get => yellowPresss;
+            get => selectedYellowPress;
             set
             {
-                yellowPresss = value;
+                selectedYellowPress = value;
                 Signal();
             }
         }
-        
-        public YellowPress SelectedYellowPress { get; set; }
-        //public Singer SelectedSinger { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
         void Signal([CallerMemberName] string prop = null)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         
         
-        public WinFullYellowPress()
+        public WinFullYellowPress(YellowPress selectedYellowPress)
         {
             InitializeComponent();
             DataContext = this;
 
-            Loaded += WinFullYellowPress_Loaded;
+            SelectedYellowPress = selectedYellowPress;
         }
        
-        private void WinFullYellowPress_Loaded(object sender, RoutedEventArgs e)
-        {
-            UpdateList();
-        }
-
-        private void UpdateList()
-        {
-            using (var db = new _1135New2024Context())
-            {
-                YellowPresses = new ObservableCollection<YellowPress>(db.YellowPresses.
-                    Include(s => s.IdSingerNavigation).ToList());
-            }
-        }
-
     }
 }

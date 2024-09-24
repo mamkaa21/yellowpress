@@ -95,7 +95,7 @@ namespace wpf_1135_EF_sample
 
         private void ddclick(object sender, MouseButtonEventArgs e)
         {
-            WinFullYellowPress winFullYellowPress = new WinFullYellowPress();
+            WinFullYellowPress winFullYellowPress = new WinFullYellowPress(SelectedYellowPress);
             winFullYellowPress.Show();
         }
     }

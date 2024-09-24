@@ -6,19 +6,8 @@
         xmlns:local="clr-namespace:wpf_1135_EF_sample"
         mc:Ignorable="d"
         Title="WinFullYellowPress" Height="450" Width="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <ListView Grid.Row="0" ItemsSource= "{Binding YellowPresses}" SelectedItem="{Binding SelectedYellowPress}" >
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Заголовок" DisplayMemberBinding="{Binding TitleArticle}"/>
-                    <GridViewColumn Header="Содержание" DisplayMemberBinding="{Binding Description}"/>
-                    <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding IdSingerNavigation.Firstname}"/>
-                    <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding IdSingerNavigation.Lastname}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-    </Grid>
+    <StackPanel>
+        <TextBlock Text="{Binding SelectedYellowPress.TitleArticle}" TextWrapping="Wrap" FontSize="30"/>
+        <TextBlock Text="{Binding SelectedYellowPress.Description}" TextWrapping="Wrap" FontSize="22" TextAlignment="Justify"/>
+    </StackPanel>
 </Window>

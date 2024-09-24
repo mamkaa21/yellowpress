@@ -8,11 +8,12 @@
         Title="WinYellowPressEditor" Height="450" Width="800">
     <StackPanel>
         <Label Content="Название статьи"/>
-        <TextBox Text="{Binding Singer.Firstname}"/>
+        <TextBox Text="{Binding SelectedYellowPress.TitleArticle}"/>
         <Label Content="Содержание статьи"/>
-        <TextBox Text="{Binding Singer.Lastname}"/>
+        <TextBox Text="{Binding SelectedYellowPress.Description}"/>
         <Label Content="Певец"/>
-        <ComboBox DisplayMemberPath="Singer" ItemsSource="{Binding Singers}" />
+        <Label Content="{Binding Singer.Firstname}"/>
+        <Label Content="{Binding Singer.Lastname}"/>
         <Button Content="Сохранить и закрыть" Click="SaveClose"/>
     </StackPanel>
 </Window>

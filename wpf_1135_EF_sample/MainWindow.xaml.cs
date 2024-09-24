@@ -84,7 +84,9 @@ namespace wpf_1135_EF_sample
 
         private void OpenNewYellowPressEditor(object sender, RoutedEventArgs e)
         {
-            new WinYellowPressEditor().ShowDialog();
+            WinYellowPressEditor winYellowPressEditor = new WinYellowPressEditor(SelectedSinger);
+            winYellowPressEditor.Show();
+           
         }
 
         private void OpenYellowPress(object sender, RoutedEventArgs e)
